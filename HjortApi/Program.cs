@@ -1,6 +1,8 @@
 using DataAccessLibrary;
 using DataAccessLibrary.AdminUser;
+using HjortApi.Endpoints;
 using HjortApi.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -44,8 +46,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -54,6 +54,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.AddUtilityEndpoints();
 
 app.UseHttpsRedirection();
 
