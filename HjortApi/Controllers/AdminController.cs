@@ -18,8 +18,6 @@ public class AdminController : ControllerBase
         _logger = logger;
     }
 
-    public ILogger<AdminController> Logger { get; }
-
     [HttpPost("login")] // => POST /api/admin/login
     public ActionResult<string> Login([FromBody] AdminUserReqModel req)
     {
