@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary.Models;
 using HjortApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLibrary.CourseMenu;
@@ -36,6 +37,7 @@ public class CourseMenuController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpPut("~/api/protected/course-menu/{id:int}")] // => PUT /api/protected/course-menu/id
     public ActionResult UpdateCourseMenu([FromRoute] int id, CourseMenuReqModel courseMenu)
     {
