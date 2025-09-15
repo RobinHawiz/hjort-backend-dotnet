@@ -29,6 +29,8 @@ builder.Services.AddSingleton<IReservationData, ReservationData>();
 builder.Services.AddSingleton<IReservationService, ReservationService>();
 builder.Services.AddSingleton<ICourseMenuData, CourseMenuData>();
 builder.Services.AddSingleton<ICourseMenuService, CourseMenuService>();
+builder.Services.AddSingleton<ICourseData, CourseData>();
+builder.Services.AddSingleton<ICourseService, CourseService>();
 builder.Services.AddAuthentication("Bearer").AddJwtBearer(opts =>
 {
     opts.TokenValidationParameters = new()
