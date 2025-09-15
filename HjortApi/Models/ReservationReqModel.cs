@@ -28,8 +28,7 @@ public class ReservationReqModel
     [MaxLength(1000, ErrorMessage = "The message cannot exceed 1000 characters.")]
     public string Message { get; set; } = "";
 
-    [Required(ErrorMessage = "Guest amount is required.")]
-    [Range(1, 6, ErrorMessage = "The guestAmount has to be between 1 and 6.")]
+    [Range(1, 6, ErrorMessage = "Guest amount is required and has to be between 1 and 6.")]
     public int GuestAmount { get; set; }
 
     [RegularExpression(@"\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)", ErrorMessage = "The reservation date must be in ISO 8601 format.")]

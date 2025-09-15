@@ -62,8 +62,18 @@ builder.Services.Configure<ApiBehaviorOptions>(opts =>
         List<ErrorResponse> errors = new();
         foreach (var modelStateEntry in actioncontext.ModelState)
         {
-            ErrorResponse error = new (modelStateEntry.Key, modelStateEntry.Value.Errors.Select(me => me.ErrorMessage).First().ToString());
-            errors.Add(error);
+            string key = modelStateEntry.Key;
+            // Skip entries with no errors (e.g., route params like `id` still appear in ModelState).
+            if (key != "id")
+            {
+                if (key == "Password")
+                {
+                    // Rewrite so error response references the property the client actually sends, which is PasswordHash.
+                    key = "PasswordHash";
+                }
+                ErrorResponse error = new(key, modelStateEntry.Value.Errors.Select(me => me.ErrorMessage).DefaultIfEmpty("").First());
+                errors.Add(error);
+            }
         }
         return new BadRequestObjectResult(errors);
     };
