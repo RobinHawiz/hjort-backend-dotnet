@@ -1,11 +1,13 @@
 using DataAccessLibrary;
 using DataAccessLibrary.AdminUser;
+using DataAccessLibrary.CourseMenu;
 using DataAccessLibrary.Reservation;
 using HjortApi.Endpoints;
 using HjortApi.Models;
 using HjortApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using ServiceLibrary.CourseMenu;
 using ServiceLibrary.Reservation;
 using System.Text;
 
@@ -25,6 +27,8 @@ builder.Services.AddSingleton<IAdminUserData, AdminUserData>();
 builder.Services.AddSingleton<IAdminUserService, AdminUserService>();
 builder.Services.AddSingleton<IReservationData, ReservationData>();
 builder.Services.AddSingleton<IReservationService, ReservationService>();
+builder.Services.AddSingleton<ICourseMenuData, CourseMenuData>();
+builder.Services.AddSingleton<ICourseMenuService, CourseMenuService>();
 builder.Services.AddAuthentication("Bearer").AddJwtBearer(opts =>
 {
     opts.TokenValidationParameters = new()
