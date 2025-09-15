@@ -11,9 +11,9 @@ namespace HjortApi.Controllers
     public class ReservationController : ControllerBase
     {
         private readonly IReservationService _service;
-        private readonly ILogger<AdminController> _logger;
+        private readonly ILogger<ReservationController> _logger;
 
-        public ReservationController(IReservationService service, ILogger<AdminController> logger)
+        public ReservationController(IReservationService service, ILogger<ReservationController> logger)
         {
             _service = service;
             _logger = logger;
