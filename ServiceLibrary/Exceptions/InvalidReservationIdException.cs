@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ServiceLibrary.Exceptions;
 
-/// <summary>Thrown when login credentials are invalid.</summary>
-public sealed class InvalidCredException : Exception
+/// <summary>Thrown when the reservation id is invalid.</summary>
+public class InvalidReservationIdException : Exception
 {
     /// <summary>
     /// The name of the field or issue this error refers to (used by the client)
     /// </summary>
-    public string Field { get; } = "login";
-    public InvalidCredException() : base("An admin user with this username or password does not exist!") { }
+    public string Field { get; } = "id";
+    public InvalidReservationIdException() : base("The reservation with this id does not exist!") { }
 }

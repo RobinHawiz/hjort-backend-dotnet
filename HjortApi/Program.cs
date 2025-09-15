@@ -1,9 +1,12 @@
 using DataAccessLibrary;
 using DataAccessLibrary.AdminUser;
+using DataAccessLibrary.Reservation;
 using HjortApi.Endpoints;
+using HjortApi.Models;
 using HjortApi.Services;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using ServiceLibrary.Reservation;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +23,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ISqliteDataAccess, SqliteDataAccess>();
 builder.Services.AddSingleton<IAdminUserData, AdminUserData>();
 builder.Services.AddSingleton<IAdminUserService, AdminUserService>();
+builder.Services.AddSingleton<IReservationData, ReservationData>();
+builder.Services.AddSingleton<IReservationService, ReservationService>();
 builder.Services.AddAuthentication("Bearer").AddJwtBearer(opts =>
 {
     opts.TokenValidationParameters = new()
@@ -44,6 +49,20 @@ builder.Services.AddCors(options =>
     {
         policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
+});
+
+builder.Services.Configure<ApiBehaviorOptions>(opts =>
+{
+    opts.InvalidModelStateResponseFactory = actioncontext =>
+    {
+        List<ErrorResponse> errors = new();
+        foreach (var modelStateEntry in actioncontext.ModelState)
+        {
+            ErrorResponse error = new (modelStateEntry.Key, modelStateEntry.Value.Errors.Select(me => me.ErrorMessage).First().ToString());
+            errors.Add(error);
+        }
+        return new BadRequestObjectResult(errors);
+    };
 });
 
 var app = builder.Build();
