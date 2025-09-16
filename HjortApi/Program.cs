@@ -79,7 +79,7 @@ builder.Services.Configure<ApiBehaviorOptions>(opts =>
                     // Rewrite so error response references the property the client actually sends, which is PasswordHash.
                     key = "PasswordHash";
                 }
-                ErrorResponse error = new(key, modelStateEntry.Value.Errors.Select(me => me.ErrorMessage).DefaultIfEmpty("").First());
+                ErrorResponse error = new(char.ToLower(key[0]) + key[1..], modelStateEntry.Value.Errors.Select(me => me.ErrorMessage).DefaultIfEmpty("").First());
                 errors.Add(error);
             }
         }
