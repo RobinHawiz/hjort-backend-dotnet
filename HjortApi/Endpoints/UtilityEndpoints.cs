@@ -2,7 +2,7 @@
 
 internal static class UtilityEndpoints
 {
-    internal static void AddUtilityEndpoints(this WebApplication app)
+    internal static void AddUtilityEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("/api/auth", AuthCheck).RequireAuthorization();
 
