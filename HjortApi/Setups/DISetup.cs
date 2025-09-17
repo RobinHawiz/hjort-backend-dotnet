@@ -14,22 +14,22 @@ public static class DISetup
 {
     public static void AddDatabaseAccess(this IServiceCollection service)
     {
-        service.AddSingleton<ISqliteDataAccess, SqliteDataAccess>();
-        service.AddSingleton<IAdminUserData, AdminUserData>();
-        service.AddSingleton<IReservationData, ReservationData>();
-        service.AddSingleton<ICourseMenuData, CourseMenuData>();
-        service.AddSingleton<ICourseData, CourseData>();
-        service.AddSingleton<IDrinkMenuData, DrinkMenuData>();
-        service.AddSingleton<IDrinkData, DrinkData>();
+        service.AddScoped<ISqliteDataAccess, SqliteDataAccess>();
+        service.AddScoped<IAdminUserData, AdminUserData>();
+        service.AddScoped<IReservationData, ReservationData>();
+        service.AddScoped<ICourseMenuData, CourseMenuData>();
+        service.AddScoped<ICourseData, CourseData>();
+        service.AddScoped<IDrinkMenuData, DrinkMenuData>();
+        service.AddScoped<IDrinkData, DrinkData>();
     }
 
     public static void AddApplicationServices(this IServiceCollection services)
     {
-        services.AddSingleton<IAdminUserService, AdminUserService>();
-        services.AddSingleton<IReservationService, ReservationService>();
-        services.AddSingleton<ICourseMenuService, CourseMenuService>();
-        services.AddSingleton<ICourseService, CourseService>();
-        services.AddSingleton<IDrinkMenuService, DrinkMenuService>();
-        services.AddSingleton<IDrinkService, DrinkService>();
+        services.AddScoped<IAdminUserService, AdminUserService>();
+        services.AddScoped<IReservationService, ReservationService>();
+        services.AddScoped<ICourseMenuService, CourseMenuService>();
+        services.AddScoped<ICourseService, CourseService>();
+        services.AddScoped<IDrinkMenuService, DrinkMenuService>();
+        services.AddScoped<IDrinkService, DrinkService>();
     }
 }
