@@ -2,23 +2,21 @@
 
 public static class CorsSetup
 {
-    const string ProdPolicy = "Prod";
+    const string CorsPolicy = "corsPolicy";
 
-    public static void AddCorsPolicies(this IServiceCollection services)
+    public static void AddCorsPolicies(this IServiceCollection services, IConfiguration config)
     {
-        string corsPolicy = ProdPolicy;
-
         services.AddCors(options =>
         {
-            options.AddPolicy(corsPolicy, policy =>
+            options.AddPolicy(CorsPolicy, policy =>
             {
-                policy.WithOrigins("https://robinhawiz.github.io").AllowAnyHeader().AllowAnyMethod();
+                policy.WithOrigins(config.GetValue<string>("Cors:Origin")).AllowAnyHeader().AllowAnyMethod();
             });
         });
     }
 
     public static void UseCorsSetup(this IApplicationBuilder app)
     {
-        app.UseCors(ProdPolicy);
+        app.UseCors(CorsPolicy);
     }
 }
