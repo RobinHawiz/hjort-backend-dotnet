@@ -53,13 +53,13 @@ builder.Services.AddAuthentication("Bearer").AddJwtBearer(opts =>
             builder.Configuration.GetValue<string>("Authentication:SecretKey")))
     };
 });
-var corsPolicy = "Test";
+var corsPolicy = "Prod";
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(corsPolicy, policy =>
     {
-        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins("https://robinhawiz.github.io").AllowAnyHeader().AllowAnyMethod();
     });
 });
 

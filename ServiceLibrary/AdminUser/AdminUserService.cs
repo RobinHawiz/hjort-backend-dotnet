@@ -51,7 +51,7 @@ public class AdminUserService : IAdminUserService
             _config.GetValue<string>("Authentication:Audience"),
             null,
             DateTime.UtcNow,
-            DateTime.UtcNow.AddMinutes(1),
+            DateTime.UtcNow.AddHours(1),
             SigningCredentials
             );
 
