@@ -66,7 +66,7 @@ internal class Program
         DirectoryInfo dir = TryGetSolutionDirectoryInfo();
         Dictionary<string, string?> configDict = new()
         {
-            {"ConnectionStrings:Default", $"Data Source={dir.FullName}/../db/hjort.db;Version=3"}
+            {"ConnectionStrings:Default", $"Data Source={dir.FullName}/db/hjort.db;Version=3"}
         };
 
         IConfiguration config = new ConfigurationBuilder()
@@ -79,7 +79,7 @@ internal class Program
     private static DirectoryInfo TryGetSolutionDirectoryInfo()
     {
         var directory = new DirectoryInfo(Directory.GetCurrentDirectory());
-        while (directory != null && !directory.GetFiles("*.sln").Any())
+        while (directory != null && !directory.GetFiles("HjortBackend.sln").Any())
         {
             directory = directory.Parent;
         }
