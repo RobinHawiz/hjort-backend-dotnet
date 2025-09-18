@@ -25,8 +25,6 @@ app.UseSwaggerUI();
 
 app.AddUtilityEndpoints();
 
-app.UseHttpsRedirection();
-
 app.UseCorsSetup();
 
 app.UseAuthentication();
