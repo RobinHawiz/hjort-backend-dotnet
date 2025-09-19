@@ -42,7 +42,7 @@ public class AdminUserService : IAdminUserService
     {
         var secretKey = new SymmetricSecurityKey(
             Encoding.ASCII.GetBytes(
-            _config.GetValue<string>("Authentication:SecretKey")));
+            _config.GetValue<string>("Authentication:SecretKey") ?? throw new InvalidOperationException("Authentication:SecretKey is missing.")));
 
         var SigningCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 

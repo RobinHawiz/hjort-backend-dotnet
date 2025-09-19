@@ -20,7 +20,7 @@ public static class AuthSetup
                 ClockSkew = TimeSpan.Zero,
                 IssuerSigningKey = new SymmetricSecurityKey(
                     Encoding.ASCII.GetBytes(
-                    config.GetValue<string>("Authentication:SecretKey")))
+                    config.GetValue<string>("Authentication:SecretKey") ?? throw new InvalidOperationException("Authentication:SecretKey is missing.")))
             };
         });
     }

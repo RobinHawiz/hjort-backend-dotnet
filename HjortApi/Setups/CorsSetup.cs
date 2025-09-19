@@ -10,7 +10,8 @@ public static class CorsSetup
         {
             options.AddPolicy(CorsPolicy, policy =>
             {
-                policy.WithOrigins(config.GetValue<string>("Cors:Origin")).AllowAnyHeader().AllowAnyMethod();
+                policy.WithOrigins(config.GetValue<string>("Cors:Origin") ?? throw new InvalidOperationException("Cors:Origin is missing"))
+                                  .AllowAnyHeader().AllowAnyMethod();
             });
         });
     }
