@@ -16,7 +16,10 @@ public class SqliteDataAccess : ISqliteDataAccess
 
     public List<T> LoadData<T, U>(string sqlStatement, U parameters, string connectionStringName)
     {
-        string connectionString = _config.GetConnectionString(connectionStringName);
+        string connectionString = _config.GetConnectionString(connectionStringName) ?? 
+                                  throw new InvalidOperationException(
+                                  $"Connection string '{connectionStringName}' is missing. " +
+                                  "Add it under ConnectionStrings in configuration.");
 
         using (IDbConnection connection = new SQLiteConnection(connectionString))
         {
@@ -27,7 +30,10 @@ public class SqliteDataAccess : ISqliteDataAccess
 
     public void SaveData<T>(string sqlStatement, T parameters, string connectionStringName)
     {
-        string connectionString = _config.GetConnectionString(connectionStringName);
+        string connectionString = _config.GetConnectionString(connectionStringName) ??
+                                  throw new InvalidOperationException(
+                                  $"Connection string '{connectionStringName}' is missing. " +
+                                  "Add it under ConnectionStrings in configuration.");
 
         using (IDbConnection connection = new SQLiteConnection(connectionString))
         {
