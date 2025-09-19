@@ -9,7 +9,7 @@ namespace DataAccessLibrary.Models;
 public class DrinkMenuModel
 {
     public int Id { get; set; }
-    public string Title { get; set; }
-    public string Subtitle { get; set; }
+    public string Title { get; set; } = null!;
+    public string Subtitle { get; set; } = null!;
     public int PriceTot {  get; set; }
 }

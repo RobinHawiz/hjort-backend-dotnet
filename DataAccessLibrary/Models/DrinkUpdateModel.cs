@@ -8,5 +8,5 @@ namespace DataAccessLibrary.Models;
 public class DrinkUpdateModel
 {
     public int Id { get; set; }
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 }

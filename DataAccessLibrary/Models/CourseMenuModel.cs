@@ -9,6 +9,6 @@ namespace DataAccessLibrary.Models;
 public class CourseMenuModel
 {
     public int Id { get; set; }
-    public string Title { get; set; }
+    public string Title { get; set; } = null!;
     public int PriceTot {  get; set; }
 }
