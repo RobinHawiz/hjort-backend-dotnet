@@ -63,7 +63,7 @@ internal class Program
 
     private static IConfiguration CreateConfig()
     {
-        DirectoryInfo dir = TryGetSolutionDirectoryInfo();
+        DirectoryInfo dir = TryGetSolutionDirectoryInfo() ?? throw new InvalidOperationException("Could not get HjortBackend.sln directory path");
         Dictionary<string, string?> configDict = new()
         {
             {"ConnectionStrings:Default", $"Data Source={dir.FullName}/db/hjort.db;Version=3"}
@@ -76,7 +76,7 @@ internal class Program
         return config;
     }
 
-    private static DirectoryInfo TryGetSolutionDirectoryInfo()
+    private static DirectoryInfo? TryGetSolutionDirectoryInfo()
     {
         var directory = new DirectoryInfo(Directory.GetCurrentDirectory());
         while (directory != null && !directory.GetFiles("HjortBackend.sln").Any())
