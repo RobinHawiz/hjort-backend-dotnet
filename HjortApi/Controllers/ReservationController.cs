@@ -64,7 +64,7 @@ namespace HjortApi.Controllers
         /// Creates a new reservation.
         /// </summary>
         /// <remarks>
-        /// Body (validation via <c>[ApiController]</c>):
+        /// Body:
         /// - <c>FirstName</c>: required, 1–50 chars.
         /// 
         /// - <c>LastName</c>: required, 1–50 chars.
