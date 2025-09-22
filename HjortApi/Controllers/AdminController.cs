@@ -7,7 +7,6 @@ using Microsoft.Extensions.Logging;
 
 namespace HjortApi.Controllers;
 
-[Route("api/[controller]")]
 [ApiController]
 public class AdminController : ControllerBase
 {
@@ -39,7 +38,7 @@ public class AdminController : ControllerBase
     /// <response code="400"><c>List&lt;ErrorResponse&gt;</c> (invalid body).</response>
     /// <response code="401">Invalid credentials.</response>
     /// <response code="500">Unexpected server error.</response>
-    [HttpPost("login")] // => POST /api/admin/login
+    [HttpPost("~/api/admin/login")] // => POST /api/admin/login
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(List<ErrorResponse>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
