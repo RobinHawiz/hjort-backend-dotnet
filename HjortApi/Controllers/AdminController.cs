@@ -22,8 +22,10 @@ public class AdminController : ControllerBase
     /// Authenticates an admin and returns a JWT for protected endpoints.
     /// </summary>
     /// <remarks>
-    /// Requirements:
-    /// - Username and password must match an existing admin user.
+    /// Body:
+    /// - <c>Username</c> required.
+    /// 
+    /// - <c>Password</c> required.
     /// 
     /// Responses:
     /// - 200: <c>{ "token": "..." }</c> – JWT string

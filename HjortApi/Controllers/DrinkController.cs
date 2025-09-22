@@ -60,7 +60,7 @@ public class DrinkController : ControllerBase
     /// Creates a new drink under a drink menu.
     /// </summary>
     /// <remarks>
-    /// Requirements:
+    /// Body:
     /// - <c>DrinkMenuId</c> &gt;= 1.
     /// 
     /// - <c>Name</c> required, 1–200 chars.

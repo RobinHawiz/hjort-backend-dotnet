@@ -61,7 +61,7 @@ public class CourseController : ControllerBase
     /// Creates a new course under a course menu.
     /// </summary>
     /// <remarks>
-    /// Requirements:
+    /// Body:
     /// - <c>CourseMenuId</c> &gt;= 1 and must reference an existing course menu.
     /// 
     /// - <c>Name</c> required, 1–200 chars.
