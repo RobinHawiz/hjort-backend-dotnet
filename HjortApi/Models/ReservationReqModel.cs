@@ -31,6 +31,6 @@ public class ReservationReqModel
     [Range(1, 6, ErrorMessage = "Guest amount is required and has to be between 1 and 6.")]
     public int GuestAmount { get; set; }
 
-    [RegularExpression(@"\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)", ErrorMessage = "The reservation date must be in ISO 8601 format.")]
+    [RegularExpression(@"^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])T([01]\d|2[0-3]):[0-5]\d:[0-5]\d\.000Z$", ErrorMessage = "The reservation date must be in ISO 8601 format.")]
     public string ReservationDate { get; set; } = default!;
 }
