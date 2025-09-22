@@ -10,7 +10,7 @@ var config = builder.Configuration;
 
 builder.Services.AddControllers().AddJsonOptions(opts => opts.ConfigureJson());
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(opts => opts.ConfigureSwagger());
 builder.Services.AddDatabaseAccess();
 builder.Services.AddApplicationServices();
 builder.Services.AddAuth(config);
