@@ -1,7 +1,7 @@
 using HjortApi.Endpoints;
 using HjortApi.Setups;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using AspNetCore.Swagger.Themes;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -21,7 +21,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 
-app.UseSwaggerUI();
+app.UseSwaggerUI(ModernStyle.Dark);
 
 app.AddUtilityEndpoints();
 
