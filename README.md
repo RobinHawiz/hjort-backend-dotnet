@@ -73,10 +73,12 @@ cd HjortApi
 Set JWT settings:
 
 ```bash
-dotnet user-secrets set "Authentication:SecretKey" "<a-long-random-string>"
+dotnet user-secrets set "Authentication:SecretKey" "<l0ng-and-rand0m-64-ish-character-string-please-not-your-pet-name>"
 dotnet user-secrets set "Authentication:Issuer" "http://localhost:4000"
 dotnet user-secrets set "Authentication:Audience" "HjortApi"
 ```
+
+> The `Authentication:SecretKey` (used as the JWT signing key) signs tokens with HS256 and must be at least 32 bytes (256 bits). **Use a plain ASCII string so 1 char = 1 byte (recommend 48–64 chars)**.
 
 > SQLite connection and CORS are already configured for local dev/testing, you only need to set JWT secrets.
 
