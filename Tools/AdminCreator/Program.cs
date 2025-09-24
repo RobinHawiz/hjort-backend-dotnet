@@ -9,7 +9,7 @@ internal class Program
         IConfiguration config = CreateConfig();
         ISqliteDataAccess db = new SqliteDataAccess(config);
         string connectionStringName = "Default";
-        DirectoryInfo dir = TryGetSolutionDirectoryInfo();
+        DirectoryInfo dir = TryGetSolutionDirectoryInfo()!;
 
         AdminUser user = new
             (
@@ -30,7 +30,7 @@ internal class Program
 
             db.SaveData<AdminUser>(insertUserSql, user, connectionStringName);
 
-            Console.WriteLine($"New user created! Please memories your credentials before closing this window.");
+            Console.WriteLine($"New user created! Please memorize your credentials before closing this window.");
         }
         else
         {
